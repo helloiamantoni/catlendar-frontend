@@ -56,11 +56,13 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen p-8 bg-background">
-      <div className="max-w-4xl mx-auto">
+    <div className="flex justify-center items-center min-h-screen p-8 bg-background">
+      <div className="w-full max-w-7xl mx-auto">
         {/* 달력 헤더 */}
-        <h1 className="text-4xl font-bold text-black100 mb-8">
-          {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+        <h1 className="text-5xl font-bold text-primary mb-8">
+          {currentDate.getMonth() + 1} {monthNames[currentDate.getMonth()]}
+          <br />
+          <p className="text-black500">{currentDate.getFullYear()}</p>
         </h1>
 
         {/* 달력 그리드 */}
@@ -72,7 +74,7 @@ export default function Home() {
                 key={day}
                 className="p-4 text-center font-semibold border-b border-black700"
               >
-                {day}
+                {day.slice(0, 3).toUpperCase()}
               </div>
             ))}
           </div>
@@ -83,15 +85,15 @@ export default function Home() {
               <div
                 key={index}
                 className={`
-                  p-4 min-h-[100px] border-b border-r border-black700
+                  p-2 min-h-[160px] border-b border-r border-black700
                   ${day ? "hover:bg-black900 cursor-pointer" : "bg-black800/50"}
                   ${index % 7 === 6 ? "border-r-0" : ""}
                 `}
               >
-                {day && (
+                {day != null ? (
                   <span
                     className={`
-                    inline-block w-8 h-8 text-center leading-8 rounded-full
+                    inline-block size-6 text-center leading-6 rounded-full
                     ${
                       day === new Date().getDate() &&
                       currentDate.getMonth() === new Date().getMonth() &&
@@ -103,7 +105,7 @@ export default function Home() {
                   >
                     {day}
                   </span>
-                )}
+                ) : null}
               </div>
             ))}
           </div>
