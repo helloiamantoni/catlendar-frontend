@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { MouseTracker } from "@/components/MouseTracker";
 export default function Home() {
   // 현재 날짜 정보로 초기화
   const [currentDate] = useState(new Date());
@@ -56,7 +56,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-8 bg-background">
+    <div className="relative flex justify-center items-center min-h-screen p-8 bg-background">
+      <MouseTracker />
+
       <div className="w-full max-w-7xl mx-auto">
         {/* 달력 헤더 */}
         <h1 className="text-5xl font-bold text-primary mb-8">
